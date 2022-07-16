@@ -9,11 +9,36 @@ const questions = [
     name: 'title',
   },
   {
+    type: 'input',
+    message: 'Write a description for your project.',
+    name: 'description',
+  },
+  {
+    type: 'input',
+    message: "How did you perform the required installations for your project?",
+    name: 'installation instructions'
+  },
+  {
+    type: 'input',
+    message: "Describe how your aplication/project could be used.",
+    name: 'usage information'
+  },
+  {
+    type: 'input',
+    message: "Describe what other contributions to your project there were.",
+    name: 'contribution guidelines'
+  },
+  {
+    type: 'input',
+    message: "Describe how to run the tests utilized in your project.",
+    name: 'tests instructions'
+  },
+  {
     type: 'list',
-    message: 'What is your project burrito?',
-    name: 'list',
-    choices: ["yes", "no", "taco"]
-  }
+    message: "Choose a license for your project.",
+    choices: ['Apache 2.0 License', 'Boost Software License 1.0', 'BSD 3-Clause License', 'BSD 2-Clause License'],
+    name: 'license'
+  },
 ];
 
 // TODO: Create a function to write README file
