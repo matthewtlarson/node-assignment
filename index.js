@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -16,22 +17,22 @@ const questions = [
   {
     type: 'input',
     message: "How did you perform the required installations for your project?",
-    name: 'installation instructions'
+    name: 'installation'
   },
   {
     type: 'input',
     message: "Describe how your aplication/project could be used.",
-    name: 'usage information'
+    name: 'usage'
   },
   {
     type: 'input',
     message: "Describe what other contributions to your project there were.",
-    name: 'contribution guidelines'
+    name: 'contribution'
   },
   {
     type: 'input',
     message: "Describe how to run the tests utilized in your project.",
-    name: 'tests instructions'
+    name: 'tests'
   },
   {
     type: 'list',
@@ -42,7 +43,7 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+/*function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, err => {
     if (err) {
       return console.log(err);
@@ -56,9 +57,17 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt(questions).then((data) => {
     console.table(data)
-    writeToFile('README.md',`# ${data.title}`)
+    writeToFile('README.md', data.title);
   })
-}
+}*/
+
+function init () {inquirer
+  .prompt(questions)
+  .then((response) => 
+       fs.writeFile('README.MD', generateMarkdown(response), (err) =>
+       err ? console.log(err) : console.log('success')
+       ) 
+)};
 
 // Function call to initialize app
 init();
