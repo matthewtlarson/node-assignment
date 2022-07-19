@@ -35,6 +35,16 @@ const questions = [
     name: 'tests'
   },
   {
+    type: 'input',
+    message: "What is your GitHub Username?",
+    name: 'username',
+  },
+  {
+    type: 'input',
+    message: "What is your email?",
+    name: 'email',
+  },
+  {
     type: 'list',
     message: "Choose a license for your project.",
     choices: ['Apache 2.0 License', 'Boost Software License 1.0', 'BSD 3-Clause License', 'BSD 2-Clause License'],
@@ -42,31 +52,12 @@ const questions = [
   },
 ];
 
-// TODO: Create a function to write README file
-/*function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, err => {
-    if (err) {
-      return console.log(err);
-    }
-  
-    console.log("Your README.md file has been created")
-});
-}
-
-// TODO: Create a function to initialize app
-function init() {
-  inquirer.prompt(questions).then((data) => {
-    console.table(data)
-    writeToFile('README.md', data.title);
-  })
-}*/
-
 function init () {inquirer
   .prompt(questions)
   .then((response) => 
-       fs.writeFile('README.MD', generateMarkdown(response), (err) =>
-       err ? console.log(err) : console.log('success')
-       ) 
+  fs.writeFile('README.MD', generateMarkdown(response), (err) =>
+  err ? console.log(err) : console.log('success')
+  ) 
 )};
 
 // Function call to initialize app
